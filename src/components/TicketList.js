@@ -1,5 +1,9 @@
 import React from "react";
 import Ticket from "./Ticket";
+import { v4 } from 'uuid';
+
+const ticket = {};
+ticket.id = v4()
 
 const mainTicketList = [
   {

@@ -1,13 +1,14 @@
 import React from "react";
 import NewTicketForm from "./NewTicketForm";
-import NewTicketform from "./NewTicketForm";
 import TicketList from "./TicketList";
 
 class TicketControl extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      formVisibleOnPage: false
+      formVisibleOnPage: false,
+      mainTicketList: []
     };
   }
 
@@ -24,7 +25,7 @@ class TicketControl extends React.Component {
       currentVisibleState = <NewTicketForm />
       buttonText = "Return to Ticket List";
     } else {
-      currentVisibleState = <TicketList />
+      currentVisibleState = <TicketList ticketList={this.state.mainTicketList} />
       buttonText = "Add Ticket";
     }
     return (

@@ -1,6 +1,7 @@
 import React from "react";
 import Ticket from "./Ticket";
 import { v4 } from 'uuid';
+import PropTypes from "prop-types";
 
 const ticket = {};
 ticket.id = v4()

@@ -15,6 +15,11 @@ class TicketControl extends React.Component {
     };
   }
 
+  handleEditClick = () => {
+    console.log("handleEditClick reached!");
+    this.state({editing: true});
+  }
+
   handleDeletingTicket = (id) => {
     const newMainTicketList = this.state.mainTicketList.filter(ticket => ticket.id !== id);
     this.setState({

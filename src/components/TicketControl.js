@@ -2,6 +2,7 @@ import React from "react";
 import NewTicketForm from "./NewTicketForm";
 import TicketList from "./TicketList";
 import TicketDetail from "./TicketDetail";
+import EditTicketForm from './EditTicketForm';
 
 class TicketControl extends React.Component {
 
@@ -55,21 +56,24 @@ class TicketControl extends React.Component {
   render() {
     let currentVisibleState = null;
     let buttonText = null;
-    if (this.state.selectedTicket != null) {
-      currentVisibleState = 
-        <TicketDetail
-        ticket = {this.state.selectedTicket}
-        onClickingDelete = {this.handleDeletingTicket}
-        onClickingEdit = {this.handleEditClick} />
+
+    if (this.state.editing) {
+      currentVisibleState = <EditTicketForm ticket = {this.state.selectedTicket} />
       buttonText = "Return to Ticket List";
-    }
-    else if (this.state.formVisibleOnPage) {
-      currentVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} />
-      buttonText = "Return to Ticket List";
-    } else {
-      currentVisibleState = <TicketList ticketList={this.state.mainTicketList} onTicketSelection={this.handleChangingSelectedTicket} />;
-      buttonText = "Add Ticket";
-    }
+     } else if (this.state.selectedTicket != null) {
+        currentVisibleState = 
+          <TicketDetail
+          ticket = {this.state.selectedTicket}
+          onClickingDelete = {this.handleDeletingTicket}
+          onClickingEdit = {this.handleEditClick} />
+        buttonText = "Return to Ticket List";
+      } else if (this.state.formVisibleOnPage) {
+          currentVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} />
+          buttonText = "Return to Ticket List";
+        } else {
+          currentVisibleState = <TicketList ticketList={this.state.mainTicketList} onTicketSelection={this.handleChangingSelectedTicket} />;
+          buttonText = "Add Ticket";
+        }
     return (
       <React.Fragment>
         {currentVisibleState}

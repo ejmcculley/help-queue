@@ -14,7 +14,7 @@ function ReusableForm(props) {
           name="location"
           placeholder="Location" />
         <textarea
-          type="issue"
+          name="issue"
           placeholder="Describe your issue." />
         <button type="submit">{props.buttonText}</button>
       </form>

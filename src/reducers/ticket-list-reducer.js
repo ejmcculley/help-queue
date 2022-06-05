@@ -1,4 +1,4 @@
-export default (state = {}, action) => {
+const reducer = (state = {}, action) => {
   const { names, location, issue, id } = action;
   switch (action.type) {
   case "ADD_TICKET":
@@ -18,3 +18,5 @@ export default (state = {}, action) => {
     return state;
   }
 };
+
+export default reducer;
